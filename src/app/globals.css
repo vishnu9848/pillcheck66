@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 15% 12%; /* deep slate for text */
+    --card: 0 0% 100%;
+    --card-foreground: 210 15% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 15% 12%;
+    --primary: 173 60% 41%; /* Teal/cyan primary */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 30% 95%; /* soft cool background */
+    --secondary-foreground: 210 15% 12%;
+    --muted: 215 30% 95%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 145 54% 40%; /* Medicinal green */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 9 81% 59%; /* Red for errors */
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 92%;
+    --input: 210 20% 92%;
+    --ring: 173 60% 41%;
+    --radius: 0.5rem;
+    --chart-1: 200 70% 45%; /* teal */
+    --chart-2: 260 66% 48%; /* indigo */
+    --chart-3: 145 54% 40%; /* green */
+    --chart-4: 40 95% 55%; /* amber */
+    --chart-5: 350 65% 55%; /* rose */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 207 70% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 145 63% 49%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 9 81% 59%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 207 70% 53%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.2),
+                 0 0 40px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(6, 182, 212, 0.3),
+                 0 0 50px rgba(6, 182, 212, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-title {
+  animation: glow 3s ease-in-out infinite;
+  background: linear-gradient(90deg, #06b6d4, #0ea5e9, #6366f1, #06b6d4);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 8s ease infinite;
+}
+
+.hero-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Decorative medical-themed background that appears subtly on wide screens */
+@media (min-width: 1024px) {
+  .site-decor {
+    background-image: linear-gradient(135deg, rgba(14,165,164,0.05), rgba(79,70,229,0.03)), url('/icons/pill.svg'), url('/icons/stethoscope.svg');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center top 16px, calc(100% - 48px) 40px, 40px 48px;
+    background-size: cover, 64px 64px, 56px 56px;
+  }
+}
